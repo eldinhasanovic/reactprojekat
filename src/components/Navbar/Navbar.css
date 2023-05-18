@@ -1,0 +1,21 @@
+.navbar {
+  height: 15vh;
+  color: rgb(62, 0, 12);
+  background-color: rgb(100, 75, 243);
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  height: 100%;
+  width: auto;
+}
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  align-items: center;
+  margin-right: 20px;
+}
+h2 {
+  margin: 35px;
+}

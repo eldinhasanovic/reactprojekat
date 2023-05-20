@@ -1,19 +1,22 @@
 import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-// import logo from "../../assets/images/logo.png";
-
+import logo from "../../assets/logo.png";
 export default function Navbar() {
   return (
     <header className="navbar">
       <NavLink to={"/"}>
-        <img
-          src={require("../../assets/logo.png")}
-          alt="logo"
-          className="logo"
-        />
+        <img src={logo} alt="logo" className="logo" />
       </NavLink>
       <div className="links">
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive ? "activeStyles" : "classicStyles"
+          }
+        >
+          <h2>HOME</h2>
+        </NavLink>
         <NavLink
           to={"/products"}
           className={({ isActive }) =>

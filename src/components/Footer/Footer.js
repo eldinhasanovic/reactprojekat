@@ -4,7 +4,7 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <footer className="footer">
-      <h2>&copy;CopyRight 2023</h2>
+      <p className="footer-text">&copy;CopyRight</p>
     </footer>
   );
 }

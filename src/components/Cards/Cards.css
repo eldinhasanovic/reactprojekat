@@ -1,0 +1,25 @@
+.product-name {
+  height: 55px;
+}
+.product-price {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0;
+}
+.btn-add {
+  color: #2e5b36;
+  font-weight: 600;
+}
+.btn-add:hover {
+  background-color: #2e5b36;
+  color: white;
+}
+.flexbox {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.center {
+  display: flex;
+  align-items: center;
+}

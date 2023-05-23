@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../assets/shopping-cart-3045.png";
 export default function Navbar() {
   return (
     <header className="navbar">
@@ -18,7 +18,7 @@ export default function Navbar() {
           <h2>HOME</h2>
         </NavLink>
         <NavLink
-          to={"/products"}
+          to={"/shop"}
           className={({ isActive }) =>
             isActive ? "activeStyles" : "classicStyles"
           }

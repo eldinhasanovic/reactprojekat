@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -6,13 +6,29 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./Cards.css";
+import DeleteBtn from "../../pages/Products/DeleteButton";
+import { AppContext } from "../../AppContext/AppContext";
+
 export default function Cards({
+  id,
   productName,
   productPrice,
   productImage,
   currencySign,
-  onPress,
+  addToCart,
+  deleteFromCart,
 }) {
+  const { cart } = useContext(AppContext);
+  const [isAdded, setIsAdded] = useState(false);
+
+  useEffect(() => {
+    if (!!cart.find((product) => product.id === id)) {
+      setIsAdded(true);
+    } else {
+      setIsAdded(false);
+    }
+  }, [id, cart]);
+  console.log({ isAdded });
   return (
     <Card sx={{ maxWidth: 450 }}>
       <CardMedia sx={{ height: 250 }} image={productImage} title="" />
@@ -21,29 +37,36 @@ export default function Cards({
           gutterBottom
           variant="h5"
           component="div"
-          className="product-name"
+          style={{ height: "55px" }}
         >
           {productName}
         </Typography>
-        <div className="flexbox">
-          <div className="center">
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="div"
-              className="product-price"
-              style={{ marginBottom: 0 }}
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          className="product-price"
+          style={{ fontWeight: "700" }}
+        >
+          {productPrice}
+          {currencySign}
+        </Typography>
+        <CardActions
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
+          {!isAdded ? (
+            <Button
+              style={{ color: "#2e5b36", fontWeight: "700" }}
+              onClick={addToCart}
+              size="small"
+              className="btn-add"
             >
-              {productPrice}
-              {currencySign}
-            </Typography>
-          </div>
-          <CardActions>
-            <Button onClick={onPress} size="small" className="btn-add">
               ADD TO CART
             </Button>
-          </CardActions>
-        </div>
+          ) : (
+            <DeleteBtn onDelete={deleteFromCart} />
+          )}
+        </CardActions>
       </CardContent>
     </Card>
   );

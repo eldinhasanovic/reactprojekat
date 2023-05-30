@@ -5,14 +5,11 @@ import Currency from "../Products/Currency/Currency";
 import Pagination from "@mui/material/Pagination";
 import { AppContext } from "../../AppContext/AppContext";
 import { toast } from "react-hot-toast";
-import DeleteButton from "../Products/DeleteButton";
 
 export default function Products() {
-  const { product, addToCart, cart } = useContext(AppContext);
+  const { product, addToCart, cart, deleteFromCart } = useContext(AppContext);
   const [currency, setCurrency] = useState(1);
   const [page, setPage] = useState(1);
-  const [showDeleteButton, setShowDeleteButton] = useState(false);
-  const [selectedCardId, setSelectedCardId] = useState(null);
 
   const handleChange = (event, value) => {
     setPage(value);
@@ -52,32 +49,29 @@ export default function Products() {
   };
 
   return (
-    <div className="product-body">
+    <>
       <div className="set-currency">
         <Currency handleCurrencyChange={handleCurrencyChange} />
       </div>
       <div className="products-container">
-        {product &&
-          product
-            .slice(
-              (page - 1) * productsPerPage,
-              (page - 1) * productsPerPage + productsPerPage
-            )
-            .map((e) => (
-              <Cards
-                key={e.id}
-                productImage={e.imageURL}
-                productName={e.title}
-                productPrice={convertCurrency(e.price)}
-                currencySign={currencySign(currency)}
-                addToCart={() => {
-                  addToCart(product.id);
-                }}
-                deleteFromCart={() => {
-                  toast.success("Successfully deleted from cart!");
-                }}
-              ></Cards>
-            ))}
+        {product
+          .map((product) => (
+            <Cards
+              key={product.id}
+              id={product.id}
+              productName={product.title}
+              productPrice={convertCurrency(product.price)}
+              currencySign={currencySign(currency)}
+              productImage={product.imageURL}
+              addToCart={() => {
+                addToCart(product.id);
+              }}
+              deleteFromCart={() => {
+                deleteFromCart(product.id);
+              }}
+            />
+          ))
+          .slice((page - 1) * productsPerPage, page * productsPerPage)}
       </div>
       <div className="pagination">
         <Pagination
@@ -87,6 +81,6 @@ export default function Products() {
           onChange={handleChange}
         />
       </div>
-    </div>
+    </>
   );
 }

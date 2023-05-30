@@ -16,12 +16,12 @@ export default function Navbar() {
       </NavLink>
       <div className="links">
         <NavLink
-          to={"/"}
+          to={"/sale"}
           className={({ isActive }) =>
-            isActive ? "activeStyles" : "classicStyles"
+            isActive ? "activeStyles sale" : "classicStyles sale"
           }
         >
-          <h2>HOME</h2>
+          <h2>ON SALE</h2>
         </NavLink>
         <NavLink
           to={"/shop"}
@@ -38,7 +38,10 @@ export default function Navbar() {
           }
         >
           <div className="cartIconContainer">
-            <ShoppingCartIcon className="cartIcon" />
+            <ShoppingCartIcon
+              className="cartIcon"
+              style={{ fontSize: "50px" }}
+            />
             {filteredCart.length > 0 && (
               <div className="cartCounter">{filteredCart.length}</div>
             )}

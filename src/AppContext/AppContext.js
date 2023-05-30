@@ -6,6 +6,11 @@ const AppContext = createContext();
 
 function ContextProvider({ children }) {
   const [product, setProduct] = useState(productsJSON);
+  const [onSale] = useState(
+    product.filter((product) => {
+      product.quantity > 20;
+    })
+  );
   const [cart, setCart] = useState([]);
 
   const addToCart = (id) => {
@@ -55,7 +60,7 @@ function ContextProvider({ children }) {
       const newCart = cart.filter((product) => product.id !== id);
       return newCart;
     });
-    toast.success("Successfully deleted from cart!");
+    toast.error("Successfully removed from cart!");
   };
 
   const increase = (id) => {
@@ -130,6 +135,7 @@ function ContextProvider({ children }) {
     deleteFromCart,
     increase,
     decrease,
+    onSale,
   };
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
 }

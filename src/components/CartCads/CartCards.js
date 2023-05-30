@@ -30,7 +30,7 @@ export default function CartCards({
           onClick={() => {
             decrease(id);
           }}
-          style={{ width: 30 }}
+          style={{ width: "30px" }}
         >
           -
         </button>
@@ -39,7 +39,7 @@ export default function CartCards({
           onClick={() => {
             increase(id);
           }}
-          style={{ width: 30 }}
+          style={{ width: "30px" }}
         >
           +
         </button>

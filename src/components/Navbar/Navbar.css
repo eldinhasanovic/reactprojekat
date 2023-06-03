@@ -7,20 +7,17 @@
   justify-content: space-between;
 }
 .logo {
-  height: 80px;
-  width: 80px;
+  height: 64px;
+  width: 64px;
   padding: 10px;
   margin-left: 20px;
 }
 .links {
-  margin-right: 0px;
-  width: 27%;
+  width: 30%;
   display: flex;
   gap: 30px;
-  /* justify-content: space-evenly; */
   margin-left: 20px;
   text-decoration: none;
-  align-items: center;
 }
 .activeStyles {
   color: white;
@@ -36,10 +33,10 @@
 .cartIconContainer {
   position: relative;
 }
-/* 
+
 .cartIcon {
   font-size: 2.5rem;
-} */
+}
 
 .cartCounter {
   position: absolute;
@@ -54,10 +51,4 @@
   background-color: green;
   color: white;
   font-size: 0.9rem;
-}
-.sale {
-  /* color: rgb(240, 240, 125); */
-  border: dotted yellow 1px;
-  border-radius: 10px;
-  padding: 10px;
 }

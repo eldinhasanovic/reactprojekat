@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./Cards.css";
 import DeleteBtn from "../../pages/Products/DeleteButton";
@@ -18,7 +17,7 @@ export default function Cards({
   addToCart,
   deleteFromCart,
 }) {
-  const { cart } = useContext(AppContext);
+  const { cart, putDot } = useContext(AppContext);
   const [isAdded, setIsAdded] = useState(false);
   // console.log(cart);
 
@@ -50,19 +49,15 @@ export default function Cards({
           className="product-price"
           style={{ fontWeight: "700" }}
         >
-          {productPrice}
+          <p className="ttl">Total price:</p>
+          {putDot(productPrice)}
           {currencySign}
         </Typography>
         <CardActions style={{ display: "flex", justifyContent: "center" }}>
           {!isAdded ? (
-            <Button
-              style={{ color: "#2e5b36", fontWeight: "700" }}
-              onClick={addToCart}
-              size="small"
-              className="btn-add"
-            >
+            <button onClick={addToCart} className="btn-add">
               ADD TO CART
-            </Button>
+            </button>
           ) : (
             <DeleteBtn onDelete={deleteFromCart} />
           )}

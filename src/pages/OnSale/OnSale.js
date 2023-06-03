@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import Cards from "../../components/Cards/Cards";
+import React, { useState, useContext } from "react";
+// import Cards from "../../components/Cards/Cards";
 import "./OnSale.css";
 import Currency from "../Products/Currency/Currency";
 import Pagination from "@mui/material/Pagination";
 import { AppContext } from "../../AppContext/AppContext";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 import BasicCard from "../../components/OnSaleCards/OnSaleCard";
 
 export default function OnSale() {
-  const { product, addToCart, cart, deleteFromCart } = useContext(AppContext);
+  const { addToCart, deleteFromCart } = useContext(AppContext);
   const [currency, setCurrency] = useState(1);
   const [page, setPage] = useState(1);
   const { onSale } = useContext(AppContext);
@@ -35,7 +35,7 @@ export default function OnSale() {
     }
   };
 
-  const productsPerPage = 15;
+  const productsPerPage = 12;
   const numOfPages = Math.ceil((onSale && onSale.length) / productsPerPage);
 
   const convertCurrency = (el) => {
